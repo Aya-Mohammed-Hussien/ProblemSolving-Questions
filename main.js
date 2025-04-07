@@ -118,7 +118,6 @@ const removeDuplicateInTheSameArray = (arr) => {
 };
 console.log(removeDuplicateInTheSameArray([1, 2, 3, 4, 2, 3, 5, 4, 6]));
 
-
 //10-3-2025
 // Problem : You are developing a text editor's undo feature that needs to handle word operations. The editor maintains a history of words, and users can perform two types of operations: 'ADD' (adds a word) and 'UNDO' (reverts the last non-UNDO operation). Each UNDO operation removes the effect of the last ADD operation that hasn't been undone yet. Design a function that processes a sequence of operations and returns the final state of the text. Words should be space-separated in the final output. If there are no operations left to undo, the UNDO operation should be ignored.
 // Input:['ADD hello', 'ADD world', 'UNDO', 'ADD there']
@@ -127,32 +126,35 @@ console.log(removeDuplicateInTheSameArray([1, 2, 3, 4, 2, 3, 5, 4, 6]));
 function processOperations(operations) {
   let stack = [];
   for (let operation of operations) {
-      if (operation.startsWith('ADD')) {
-          // Extract the word from the ADD operation and push it to the stack
-          let word = operation.split(' ')[1];
-          stack.push(word);
-      } else if (operation === 'UNDO' && stack.length > 0) {
-          // If there are words to undo, pop the last word from the stack
-          stack.pop();
-      }
+    if (operation.startsWith("ADD")) {
+      // Extract the word from the ADD operation and push it to the stack
+      let word = operation.split(" ")[1];
+      stack.push(word);
+    } else if (operation === "UNDO" && stack.length > 0) {
+      // If there are words to undo, pop the last word from the stack
+      stack.pop();
+    }
   }
   // Join the words in the stack into a space-separated string and return it
-  return stack.join(' ');
+  return stack.join(" ");
 }
-const operations = ['ADD hello', 'ADD world', 'UNDO', 'ADD there'];
+const operations = ["ADD hello", "ADD world", "UNDO", "ADD there"];
 const output = processOperations(operations);
-console.log(output); 
-
+console.log(output);
 
 //2-4-2025
-//Problem is to create a pyramid and inverted pyramid 
-function drawPyramid (){
+//Problem is to create a pyramid and inverted pyramid
+function drawPyramid() {
   const character = "#";
   const count = 8;
   const rows = [];
   let inverted = true;
   function padRow(rowNumber, rowCount) {
-    return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
+    return (
+      " ".repeat(rowCount - rowNumber) +
+      character.repeat(2 * rowNumber - 1) +
+      " ".repeat(rowCount - rowNumber)
+    );
   }
   for (let i = 1; i <= count; i++) {
     if (inverted) {
@@ -161,10 +163,27 @@ function drawPyramid (){
       rows.push(padRow(i, count));
     }
   }
-  let result = ""
+  let result = "";
   for (const row of rows) {
     result = result + row + "\n";
   }
   console.log(result);
 }
 drawPyramid();
+
+
+
+//7-4-2025
+//Problem: The Mismatched Pair
+//Given an array where all elements are identical except one, write a function findMismatch that returns the index of the unique element.
+
+const findMismatch = (arr) => {
+  const commonElement = arr[0] === arr[1] ? arr[0] : arr[2];
+  let uniqueElement = arr.findIndex((element) => element !== commonElement);
+  return uniqueElement;
+};
+
+console.log(findMismatch([2, 2, 2, 2, 1]));
+console.log(findMismatch([2, 2, 1, 2]));
+console.log(findMismatch([1, 2, 2, 2]));
+console.log(findMismatch([2, 2, 1, 2, 2]));
