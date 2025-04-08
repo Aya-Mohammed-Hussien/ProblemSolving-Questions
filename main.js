@@ -171,8 +171,6 @@ function drawPyramid() {
 }
 drawPyramid();
 
-
-
 //7-4-2025
 //Problem: The Mismatched Pair
 //Given an array where all elements are identical except one, write a function findMismatch that returns the index of the unique element.
@@ -187,3 +185,23 @@ console.log(findMismatch([2, 2, 2, 2, 1]));
 console.log(findMismatch([2, 2, 1, 2]));
 console.log(findMismatch([1, 2, 2, 2]));
 console.log(findMismatch([2, 2, 1, 2, 2]));
+
+//8-4-2025
+//Problem: Sum of All Numbers in a Range
+// Write a JavaScript function that calculates the sum of all numbers between two integers (inclusive).
+// The function should handle both positive and negative numbers, as well as cases where the first number is greater than the second.
+
+const sumInRange = (startNumber, endNumber) => {
+  let sum = 0;
+  if (startNumber > endNumber) {
+    [startNumber, endNumber] = [endNumber, startNumber];
+  }
+  for (let i = startNumber; i <= endNumber; i++) {
+    sum += i;
+  }
+  return sum;
+};
+
+console.log(sumInRange(5, 1));
+console.log(sumInRange(1, 5));
+console.log(sumInRange(-3, 3));
