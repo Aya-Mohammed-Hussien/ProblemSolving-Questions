@@ -205,3 +205,34 @@ const sumInRange = (startNumber, endNumber) => {
 console.log(sumInRange(5, 1));
 console.log(sumInRange(1, 5));
 console.log(sumInRange(-3, 3));
+
+//19-4-2025
+//Problem :  The Mismatched Bracket Detector
+//Write a function in plain JavaScript that determines whether a given string of brackets is balanced (properly nested and closed).
+
+//We need to determine if a string containing only brackets ((), {}, []) is balanced, meaning:
+//Every opening bracket has a matching closing bracket.
+//Brackets are properly nested (e.g., ([)] is invalid).
+
+// Edge cases:
+// Empty string → true (no brackets to balance).
+// Non-bracket characters? Assume input is only brackets (no need to handle them).
+
+const isBalanced = (brackets) => {
+  const stack = [];
+  const pairs = { "(": ")", "{": "}", "[": "]" };
+  for (const character of brackets) {
+    if (pairs[character]) {
+      stack.push(character);
+    } else {
+      const last = stack.pop();
+      if(pairs[last] !== character ){
+        return false ;
+      }
+    }
+  }
+  return stack.length === 0 ;
+};
+console.log(isBalanced("[()]"));
+console.log(isBalanced("[(]"));
+console.log(isBalanced("[(])"));
