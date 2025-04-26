@@ -226,13 +226,33 @@ const isBalanced = (brackets) => {
       stack.push(character);
     } else {
       const last = stack.pop();
-      if(pairs[last] !== character ){
-        return false ;
+      if (pairs[last] !== character) {
+        return false;
       }
     }
   }
-  return stack.length === 0 ;
+  return stack.length === 0;
 };
 console.log(isBalanced("[()]"));
 console.log(isBalanced("[(]"));
 console.log(isBalanced("[(])"));
+
+//26-4-2025
+//Problem
+//Write a function groupAnagrams(words) that:
+//Takes an array of strings (words).
+//Groups anagrams together (words formed by rearranging letters, e.g., "listen" and "silent").
+//Returns an array of arrays, where each sub-array contains a group of anagrams.
+const groupAnagrams = (words) => {
+  const map = {};
+  for (const word of words) {
+    const key = word.split("").sort().join("");
+    if (!map[key]) {
+      map[key] = [];
+    }
+    map[key].push(word);
+  }
+  return Object.values(map);
+};
+console.log(groupAnagrams(["eat", "ate", "tea", "bat", "tab", "abt"]));
+console.log(groupAnagrams(["sea", "sae", "cat" , "tac" , "act" ,"dog"]));
