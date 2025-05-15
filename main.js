@@ -256,3 +256,17 @@ const groupAnagrams = (words) => {
 };
 console.log(groupAnagrams(["eat", "ate", "tea", "bat", "tab", "abt"]));
 console.log(groupAnagrams(["sea", "sae", "cat" , "tac" , "act" ,"dog"]));
+
+
+//15-5-2025 
+// Problem : Palindrome
+// Write a function in JavaScript to check if a given string is a palindrome. A palindrome is a word, phrase, 
+// or sequence that reads the same backward as forward (e.g., "madam", "racecar"). Ignore case and non-alphanumeric characters.
+const checkPlaindrome = (str)=>{
+  let cleanStr = str.toLowerCase().replace(/[^0-9a-z]/g , "");
+  let reversedStr = cleanStr.split("").reverse().join("");
+  return cleanStr === reversedStr ;
+}
+console.log(checkPlaindrome("maDam"));
+console.log(checkPlaindrome("Hello98uh4444"));
+console.log(checkPlaindrome("dOGdOG"));
