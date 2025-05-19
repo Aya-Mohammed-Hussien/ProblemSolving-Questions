@@ -270,3 +270,44 @@ const checkPlaindrome = (str)=>{
 console.log(checkPlaindrome("maDam"));
 console.log(checkPlaindrome("Hello98uh4444"));
 console.log(checkPlaindrome("dOGdOG"));
+
+
+//15-5-2025
+// Problem : Anagram Checker 
+// Write a function that checks if two strings are anagrams of each other.
+// An anagram is a word or phrase formed by rearranging the letters of another, ignoring spaces, punctuation, and case.
+// Example: "listen" and "silent" are anagrams.
+const checkAnagram = (str1 , str2)=>{
+  const cleanString = (str)=>{
+     return str.toLowerCase().replace(/[^0-9a-z]/g,"").split("").sort().join("");
+  }
+  return cleanString(str1) === cleanString(str2);
+}
+console.log(checkAnagram("tae" , "eaT"));
+console.log(checkAnagram("tea" , "ZOO"));
+
+
+//19-5-2025
+//Problem :A zig-zag swap 
+//You are given a sorted array of integers in increasing order. Rearrange the array in a zig-zag fashion, such that:
+//You start by taking the largest number, then the smallest number,then the second largest, then the second smallest,and so on...
+//n	number	The total number of elements in the array. Must satisfy: 1 ≤ n ≤ 2000
+// arr	number[]	A sorted array of n integers in ascending order.
+const rearrangeArr=(n , arr)=>{
+  let newArray =[];
+  let start = 0 ;
+  let end = n-1;
+  while (start <= end){
+    if (start !== end ){
+      newArray.push(arr[end]);
+      newArray.push(arr[start]);
+    }else {
+      newArray.push(arr[start])
+    }
+    start++;
+    end--;
+  }
+  return newArray.join(" ");
+}
+
+console.log(rearrangeArr(5 , [10 , 20 , 30 ,40 , 50]));
